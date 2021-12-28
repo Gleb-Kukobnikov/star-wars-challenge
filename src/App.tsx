@@ -1,26 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {CharacterList, HeroDetails} from "./containers";
+import {Header} from "./components";
+import {Route, Switch} from "react-router-dom";
+
+import ScrollRestoration from 'react-scroll-restoration';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="App">
+            <Header />
+            <ScrollRestoration />
+            <Switch>
+                <Route exact path="/" component={CharacterList} />
+                <Route exact path="/character/:id" component={HeroDetails} />
+            </Switch>
+        </div>
+    );
 }
 
 export default App;
